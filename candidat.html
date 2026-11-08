@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Espace candidat – Polytech Group</title><link rel="stylesheet" href="css/style.css"></head><body>
+<header class="top"><a class="brand" href="index.html"><img src="images/logo-polytech.jpg" alt=""><b>POLYTECH <span>GROUP</span></b></a></header>
+<section style="min-height:80vh;display:grid;place-items:center"><div class="w"><div class="card al" id="c" style="max-width:420px;margin:auto"><p>Chargement…</p></div></div></section>
+<script src="js/config.js"></script>
+<script>
+(async()=>{const e=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])),q=new URLSearchParams(location.search),c=document.getElementById("c"),u=window.POLYTECH_API;
+try{if(!u)throw 0;const r=await fetch(u+"?action=candidate&id="+encodeURIComponent(q.get("id")||"")+"&t="+encodeURIComponent(q.get("t")||""));const j=await r.json();if(!j.ok)throw 0;
+c.innerHTML=`<div class="ph">${j.photo?`<img src="${j.photo}" alt="">`:"👤"}</div><h3 style="margin-top:14px">${e(j.prenom)} ${e(j.nom)}</h3><p><b>Espace candidat</b></p><p>Inscription validée · ${e(j.concours)}</p>`}
+catch(x){c.innerHTML="<p>Espace candidat introuvable. Vérifiez le lien reçu par e-mail.</p>"}})();
+</script></body></html>
